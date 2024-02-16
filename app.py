@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import time
+import socket
 
 app = Flask(__name__)
 
@@ -30,4 +30,6 @@ def success():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True, 
+            use_reloader=False, **{'socket': socket, 'reuse_port': True})
+
